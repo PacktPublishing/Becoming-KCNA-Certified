@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: kcna
+subjects:
+# subjects can be multiple users, groups or service accounts
+- kind: User
+  name: jack # name is case sensitive
+  apiGroup: rbac.authorization.k8s.io # the standard API group for all RBAC resources
+roleRef:
+  # roleRef specifies the binding to a Role or ClusterRole
+  kind: Role # either a Role or ClusterRole
+  name: pod-reader # name of the Role or ClusterRole to bind to
+  apiGroup: rbac.authorization.k8s.io
